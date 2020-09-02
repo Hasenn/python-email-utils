@@ -12,6 +12,8 @@ from email import encoders
 
 MY_ADRESS = "eliottarloveyrier@live.fr"
 MY_NAME = "Eliott Veyrier"
+SMPTP_HOST = "SMTP.office365.com"
+SMPTP_PORT = 587
 
 def read_template(filename):
     with open(filename, 'r', encoding ='utf-8') as f:
@@ -49,7 +51,7 @@ def main():
     # Attach file
     msg.attach(p)
     # Set up SMTP object
-    s = smtplib.SMTP(host="SMTP.office365.com", port=587)
+    s = smtplib.SMTP(host=SMPTP_HOST, port=SMPTP_PORT)
     s.starttls()
     s.login(MY_ADRESS, getpass("Enter password :"))
     # Send the message
